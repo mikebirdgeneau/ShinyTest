@@ -41,7 +41,7 @@ shinyServer(function(input, output) {
     # See below for details.
     bp = ggplot(bigdata, aes(x,y))+geom_histogram(stat="identity", binwidth=1)
     
-    for(i in 1:20){
+    for(i in 1:30){
       print(i)
       try(suppressWarnings(print(bp+ggtitle(paste("129 points", i)))))
     }
