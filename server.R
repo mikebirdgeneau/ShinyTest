@@ -31,7 +31,7 @@ shinyServer(function(input, output) {
     
     for (i in 1:20){
       print(i)
-      try(print(lp+ggtitle(paste("128 points", i))))
+      try(suppressWarnings(print(lp+ggtitle(paste("128 points", i)))))
     }
     
     message("Done first!")
@@ -43,7 +43,7 @@ shinyServer(function(input, output) {
     
     for(i in 1:20){
       print(i)
-      try(print(bp+ggtitle(paste("129 points", i))))
+      try(suppressWarnings(print(bp+ggtitle(paste("129 points", i)))))
     }
     
     ## End demo code
