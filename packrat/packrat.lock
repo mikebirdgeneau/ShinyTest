@@ -55,10 +55,21 @@ Version: 1.17.1
 Hash: bb5fdc266f716b8a289a4f92007d53e3
 Requires: bitops
 
+Package: chron
+Source: CRAN
+Version: 2.3-45
+Hash: 65cf73bf43c26a4578bb251499de38cd
+
 Package: colorspace
 Source: CRAN
 Version: 1.2-6
 Hash: a53ddc5a49706984d234ea5cc209c8f0
+
+Package: data.table
+Source: CRAN
+Version: 1.9.4
+Hash: 905b6356d387a3a7e13ef62c4cf6f7e3
+Requires: reshape2, chron
 
 Package: devtools
 Source: CRAN
@@ -251,6 +262,7 @@ Hash: 7b30b5ca6c7ae80c4f916502e3ad0237
 Package: yaml
 Source: CRAN
 Version: 2.1.13
+Hash: e5d041c001f6d641fd009c1f6ef7d831
 
 Package: zoo
 Source: CRAN
