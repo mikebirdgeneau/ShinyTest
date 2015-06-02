@@ -5,8 +5,8 @@
 # http://shiny.rstudio.com
 #
 
-libDir <- file.path('packrat', 'lib', R.version$platform, getRversion())
-.libPaths(libDir)
+#libDir <- file.path('packrat', 'lib', R.version$platform, getRversion())
+#.libPaths(libDir)
 
 library(shiny)
 library(ggplot2)
