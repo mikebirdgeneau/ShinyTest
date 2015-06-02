@@ -1,3 +1,5 @@
+## NOTE: May need to 'source' this file to reproduce error. (running all lines independently may not generate the error.)
+
 library(ggplot2)
 
 set.seed(12345678)
