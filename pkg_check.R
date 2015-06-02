@@ -13,6 +13,11 @@ deps <- package_dependencies("Rcpp",db=ap, which = c("Depends", "Imports", "Link
 deps <- as.character(deps[which(deps %in% ip)])
 pkgs.to.install <- pkgs.to.remove[which(!(pkgs.to.remove %in% deps))]
 
-install.packages("Rcpp")
-sapply(deps, install.packages, dependencies = TRUE)
+install.packages("http://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_0.11.5.tar.gz",repos = NULL,type="source")
+sapply(deps, install.packages, dependencies = FALSE)
 sapply(pkgs.to.install, install.packages, dependencies = TRUE)
+
+# Testing Final attempts
+install.packages("http://cran.r-project.org/src/contrib/Archive/Rcpp/Rcpp_0.11.3.tar.gz",repos = NULL,type="source")
+install.packages("http://cran.r-project.org/src/contrib/Archive/plyr/plyr_1.8.1.tar.gz",repos=NULL,type="source")
+install.packages("http://cran.r-project.org/src/contrib/Archive/ggplot2/ggplot2_0.9.3.tar.gz",repos=NULL,type="source")
