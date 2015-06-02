@@ -6,7 +6,7 @@ ip <- installed.packages()
 }
 pkgs.to.remove <- unique(as.character(ip[!(ip[,"Priority"] %in% c("base", "recommended")), 1]))
 pkgs.to.remove<-pkgs.to.remove[which(!(pkgs.to.remove %in% "NexenOSPFM"))]
-sapply(pkgs.to.remove, remove.packages)
+sapply(pkgs.to.remove, function(x){try(remove.packages(x))})
 
 library(tools)
 deps <- package_dependencies("Rcpp",db=ap, which = c("Depends", "Imports", "LinkingTo"),reverse = TRUE,recursive=TRUE)$Rcpp
