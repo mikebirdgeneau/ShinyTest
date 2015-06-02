@@ -1,13 +1,14 @@
-library(data.table)
-dt.pkgs<-data.table(installed.packages())
-dt.pkgs<-subset(dt.pkgs,select=c("Package","Version","LibPath","Built","NeedsCompilation","Depends","LinkingTo"))
+ap <- available.packages()
+ip <- installed.packages()
+pkgs.to.remove <- unique(as.character(ip[!(ip[,"Priority"] %in% c("base", "recommended")), 1]))
+pkgs.to.remove<-pkgs.to.remove[which(!(pkgs.to.remove %in% "NexenOSPFM"))]
+sapply(pkgs.to.remove, remove.packages)
 
-dt.pkgs[Package=="Rcpp",]
+library(tools)
+deps <- package_dependencies("Rcpp",db=ap, which = c("Depends", "Imports", "LinkingTo"),reverse = TRUE,recursive=TRUE)$Rcpp
+deps <- as.character(deps[which(deps %in% ip)])
+pkgs.to.install <- pkgs.to.remove[which(!(pkgs.to.remove %in% deps))]
 
-dt.pkgs[,unlist(regmatches(Depends,m = regmatches(Depends,"Rcpp"))),by=c("Package","LibPath")]
-
-.libPaths("/Library/Frameworks/R.framework/Versions/3.1/Resources/library")
-
-install.packages(unique(subset(dt.pkgs,Built!="3.1.2" & NeedsCompilation=="yes",select=c(Package,Version,Built))$Package))
-
-#installed.packages()
+install.packages("Rcpp")
+sapply(deps, install.packages, dependencies = FALSE)
+sapply(pkgs.to.install, install.packages, dependencies = FALSE)
